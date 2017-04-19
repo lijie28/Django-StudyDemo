@@ -12,6 +12,9 @@
      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}" />
+ 
     <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -52,7 +55,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                      <li class="">
-                        <a href="#">
+                        <a href="{% url 'music:album_add' %}">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Add Album
                         </a>
                     </li>

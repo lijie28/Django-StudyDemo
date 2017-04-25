@@ -1,15 +1,46 @@
 {% extends 'music/base.html' %}
 
 {% block body%}
-    {# 
-{% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}" />
- #}
     {% if all_albums %}
         <h3> Here are all my albums </h3>
         <ul>
             {% for album in all_albums %}
-                <li><a href="{% url 'music:detail' album.id %}">{{ album.album_title }}</a><li>
+
+                <div class="col-sm-4 col-lg-2"> 
+                    <div class="thumbnail">
+
+                        <!-- Album logo -->
+                        <a href="{% url 'music:detail' album.id %}">
+                            <img src="{{ album.album_logo }}" class="img-responsive">
+                        </a>
+
+                        <div class="caption">
+                            <h2>{{ album.album_title }}</h2>
+                            <h4>{{ album.artist }}</h4>
+
+                             <!-- Detail -->
+                             <a href="{% url 'music:detail' album.id %}" class="btn btn-primary btn-sm">View Details</a>
+
+
+                            <!-- Delete -->
+                            <form action="{% url 'music:album-delete'  album.id %}}" method="post" style="display: inline;" >
+                                {% csrf_token %}
+                                <input type="hidden" name="album_id" value="{{ album.id }}"/>
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                             </form>
+                            <!-- Favorite -->
+                             <a href="#" class="btn btn-default btn-sm btn-favorite">
+                            <span class="glyhpicon glyphicon-star {% if album.is_favorite %}active{% endif %} "></span>
+                            </a>
+                        </div>
+
+
+                    </div>
+                </div>>
+                <form></form>
+
             {% endfor %}
         </ul>
     {% else %}

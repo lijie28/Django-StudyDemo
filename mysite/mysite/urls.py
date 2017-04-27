@@ -17,13 +17,21 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.authtoken.views import obtain_auth_token
+from board.urls import router
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^music/', include('music.urls')),
     url(r'^polls/', include('polls.urls')),
+    url(r'^api/token/', obtain_auth_token, name='api-token'),
+    url(r'^api/', include(router.urls)),
 
 ]
+
+# urlpatterns = [
+# ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

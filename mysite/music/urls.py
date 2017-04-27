@@ -22,6 +22,4 @@ urlpatterns = [
 
     url(r'album/(?P<pk>[0-9]+)/delete/$', views.AlbumDelete.as_view(), name='album-delete'),
 
- 
-
 ]

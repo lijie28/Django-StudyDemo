@@ -8,7 +8,7 @@ from .models import Sprint, Task
 User = get_user_model()
 
 
-class SprintSerializer(seriallizers.ModelSerializer):
+class SprintSerializer(serializers.ModelSerializer):
 
     links = serializers.SerializerMethodField()
 
@@ -23,11 +23,11 @@ class SprintSerializer(seriallizers.ModelSerializer):
                 kwargs={'pk': obj.pk}, request=request)
         }
 
-class TaskSerializer(seriallizers.ModelSerializer):
+class TaskSerializer(serializers.ModelSerializer):
     """docstring for TaskSerializer"""
     assigned = serializers.SlugRelatedField(
-        slug_field=User.USERNAME_FIELD, required=False, allow_null = true, queryset=user.objects.all())
-    status_display = seriallizers.SerializerMethodField()
+        slug_field=User.USERNAME_FIELD, required=False, queryset=User.objects.all())
+    status_display = serializers.SerializerMethodField()
     links = serializers.SerializerMethodField()
 
     class Meta:
@@ -41,20 +41,38 @@ class TaskSerializer(seriallizers.ModelSerializer):
 
     def get_links(self, obj):
         request = self.context['request']
-        return {
-            'self': reverse('sprint-detail',
-                kwargs={'pk': obj.pk}, request=request)
+        links = {
+            'self': reverse('task-detail',kwargs={'pk': obj.pk}, request=request),
+            'sprint': None,
+            'assigned': None,
+
         }
+        if obj.sprint_id:
+            links['sprint'] = reverse('sprint-detail',
+                kwargs={'pk': obj.sprint_id}, request=request)
+        if obj.assigned:
+            links['assigned'] = reverse('user-detail',
+                kwargs={User.USERNAME_FIELD: obj.assigned}, request=request)
+        return links
 
 
-
-class UserSerializer(seriallizers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     """docstring for UserSerializer"""
-    full_name = serializers.CharField(source='get_full_name')
+    full_name = serializers.CharField(source='get_full_name',read_only=True)
+    links = serializers.SerializerMethodField()
 
     class Meta:
         model = User
         fields = ('id', User.USERNAME_FIELD, 'full_name', 'is_active', )
+
+    def get_links(self, obj):
+        request = self.context['request']
+        username = obj.get_username()
+        return{
+            'self': reverse('user-detail',
+                kwargs={User.USERNAME_FIELD: username}, request=request),
+
+        }
 
 
 

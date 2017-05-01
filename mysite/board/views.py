@@ -9,6 +9,25 @@ from .serializers import SprintSerializer, TaskSerializer, UserSerializer
 User = get_user_model()
 
 
+class DefaultsMixin(object):
+    """Default settings for view authentication, permissions"""
+    authentication_class = (
+        authentication.BasicAuthentication,
+        authentication.TokenAuthentication,
+    )
+    permission_class = (
+        permissions.IsAuthenticated,
+    )
+    paginate_by = 25
+    paginate_by_param = 'page_size'
+    max_paginate_by = 100
+
+
+class SprintViewSet(viewsets.ModelViewSet):
+    """api end poing for listing and creating sprints"""
+    queryset = Sprint.objects.order_by('end')
+    serializer_class = SprintSerializer
+
 class TaskViewSet(DefaultsMixin, viewsets.ModelViewSet):
     """api end point for listing and creating tasks"""
     queryset = Task.objects.all()
@@ -22,22 +41,6 @@ class UserViewSet(DefaultsMixin, viewsets.ReadOnlyModelViewSet):
     serializer_class = UserSerializer
 
 
-class SprintViewSet(viewsets.ModelViewSet):
-    """api end poing for listing and creating sprints"""
-    queryset = Sprint.objects.order_by('end')
-    serializer_class = SprintSerializer
 
 
-class DefaultsMixin(object):
-    """Default settings for view authentication, permissions"""
-    authentication_class = (
-        authentication.BasicAuthentication,
-        authentication.TokenAuthentication,
-    )
-    permission_class = (
-        permissions.IsAuthenticated,
-    )
-    paginate_by = 25
-    paginate_by_param = 'page_size'
-    max_paginate_by = 100
 

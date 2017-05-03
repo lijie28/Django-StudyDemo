@@ -1,6 +1,6 @@
 
 ## 联系方式:
-
+* QQ : 277021639
 * Email : lijie9228@hotmail.com
 * QQ群 : 637754022
 

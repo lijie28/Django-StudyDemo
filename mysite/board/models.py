@@ -10,7 +10,7 @@ class Sprint(models.Model):
     Description: Model Description
     """
     name = models.CharField(max_length=100, blank=True, default='')
-    descripiton = models.TextField(blank=True, default='')
+    description = models.TextField(blank=True, default='')
     end = models.DateField(unique=True)
 
     def __str__(self):
@@ -33,7 +33,7 @@ class Task(models.Model):
         (STATUS_DONE, _('Done')),
     )
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, default='')
     descripiton = models.TextField(blank=True, default='')
     sprint = models.ForeignKey(Sprint, blank=True, null=True)
     status = models.SmallIntegerField(choices=STATUS_CHOICES, default=STATUS_TODO)

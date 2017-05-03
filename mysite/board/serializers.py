@@ -14,7 +14,7 @@ class SprintSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Sprint
-        fields = ('id', 'name', 'description', 'end', )
+        fields = ('id', 'name', 'description', 'end', 'links')
 
     def get_links(self, obj):
         request = self.context['request']

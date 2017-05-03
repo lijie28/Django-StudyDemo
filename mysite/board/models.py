@@ -9,9 +9,9 @@ class Sprint(models.Model):
     """
     Description: Model Description
     """
-    # name = models.CharFiedld(max_length=100, blank=True, default='')
+    name = models.CharField(max_length=100, blank=True, default='')
     descripiton = models.TextField(blank=True, default='')
-    # end = models.DataField(unique=True)
+    end = models.DateField(unique=True)
 
     def __str__(self):
         return self.name or _('Sprint ending %s') % self.end
@@ -33,15 +33,15 @@ class Task(models.Model):
         (STATUS_DONE, _('Done')),
     )
 
-    # name = models.CharFiedld(max_length=100)
+    name = models.CharField(max_length=100)
     descripiton = models.TextField(blank=True, default='')
     sprint = models.ForeignKey(Sprint, blank=True, null=True)
     status = models.SmallIntegerField(choices=STATUS_CHOICES, default=STATUS_TODO)
     order = models.SmallIntegerField(default=0)
     assigned = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True)
-    # started = models.DataField(blank=True, null=True)
-    # due = models.DataField(blank=True, null=True)
-    # completed = models.DataField(blank=True, null=True)
+    started = models.DateField(blank=True, null=True)
+    due = models.DateField(blank=True, null=True)
+    completed = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return self.name

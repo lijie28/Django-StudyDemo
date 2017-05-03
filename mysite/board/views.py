@@ -28,6 +28,7 @@ class SprintViewSet(viewsets.ModelViewSet):
     queryset = Sprint.objects.order_by('end')
     serializer_class = SprintSerializer
 
+
 class TaskViewSet(DefaultsMixin, viewsets.ModelViewSet):
     """api end point for listing and creating tasks"""
     queryset = Task.objects.all()

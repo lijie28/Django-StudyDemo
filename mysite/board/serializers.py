@@ -23,6 +23,7 @@ class SprintSerializer(serializers.ModelSerializer):
                 kwargs={'pk': obj.pk}, request=request)
         }
 
+
 class TaskSerializer(serializers.ModelSerializer):
     """docstring for TaskSerializer"""
     assigned = serializers.SlugRelatedField(
@@ -33,7 +34,7 @@ class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = ('id', 'name', 'description', 'sprint',
-         'status','status_display', 'order',
+         'status', 'status_display', 'order',
           'assigned', 'started', 'due', 'completed', )
 
     def get_status_display(self, obj):

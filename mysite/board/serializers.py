@@ -33,9 +33,9 @@ class TaskSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Task
-        fields = ('id', 'name', 'description', 'sprint',
+        fields = ('id', 'name', 'descripiton', 'sprint',
          'status', 'status_display', 'order',
-          'assigned', 'started', 'due', 'completed', )
+          'assigned', 'started', 'due', 'completed', 'links')
 
     def get_status_display(self, obj):
         return obj.get_status_display()
@@ -64,16 +64,15 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', User.USERNAME_FIELD, 'full_name', 'is_active', )
+        fields = ('id', User.USERNAME_FIELD, 'full_name', 'is_active', 'links')
 
     def get_links(self, obj):
         request = self.context['request']
         username = obj.get_username()
-        return{
-            'self': reverse('user-detail',
-                kwargs={User.USERNAME_FIELD: username}, request=request),
-
-        }
+        return reverse('user-detail', kwargs={User.USERNAME_FIELD: username}, request=request),
+            # 'self': reverse('user-detail',
+            #     kwargs={User.USERNAME_FIELD: username}, request=request),
+            # reverse('user-detail', kwargs={User.USERNAME_FIELD: username}, request=request),
 
 
 

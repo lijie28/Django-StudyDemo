@@ -5,6 +5,12 @@ from rest_framework import viewsets, authentication, permissions
 from .models import Sprint, Task
 from .serializers import SprintSerializer, TaskSerializer, UserSerializer
 
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+# from snippets.models import Snippet
+# from snippets.serializers import SnippetSerializer
+
 
 User = get_user_model()
 
@@ -42,6 +48,30 @@ class UserViewSet(DefaultsMixin, viewsets.ReadOnlyModelViewSet):
     serializer_class = UserSerializer
 
 
+class Test(DefaultsMixin, viewsets.ReadOnlyModelViewSet):
+    # request.POST
+    queryset = User.objects.order_by(User.USERNAME_FIELD)
+    @api_view(['GET', 'POST'])
+    def for_test(request):
+        response = Response()
+        response['data'] = 'test haha'
+        if request.method == 'POST':
+            return response
 
+# class LoginViewSet(object):
+#     """docstring for LoginViewSet"""
+#     # request.POST
+#     # @api_view(['GET', 'POST'])
+#     def login_list(request):
 
+#         # if request.method == 'GET':
+#         #     lookup_field = User.USERNAME_FIELD.all()
+#         #     serializer = UserSerializer(lookup_field, many=True)
+#         # return Response(serializer.data)
 
+#         if request.method == 'POST':
+#             # serializer = UserSerializer(data=request.data)
+#             # if serializer.is_valid():
+#             #     serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -1,5 +1,16 @@
+# -*- coding: utf-8 -*-
 from rest_framework import serializers
 from snippets.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
+from django.contrib.auth.models import User
+
+
+
+class UserSerializer(serializers.ModelSerializer):
+    snippets = serializers.PrimaryKeyRelatedField(many=True, queryset=Snippet.objects.all())
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'snippets')
 
 
 class SnippetSerializer(serializers.Serializer):
@@ -27,3 +38,17 @@ class SnippetSerializer(serializers.Serializer):
         instance.style = validated_data.get('style', instance.style)
         instance.save()
         return instance
+
+
+'''   说明
+It's important to remember that ModelSerializer classes don't do anything particularly magical, 
+they are simply a shortcut for creating serializer classes:
+
+    An automatically determined set of fields.
+    Simple default implementations for the create() and update() methods.'''
+
+
+# class SnippetSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Snippet
+#         fields = ('id', 'title', 'code', 'linenos', 'language', 'style')

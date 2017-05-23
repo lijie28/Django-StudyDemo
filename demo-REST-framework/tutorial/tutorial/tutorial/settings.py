@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'snippets.apps.SnippetsConfig',
 ]
 
+REST_FRAMEWORK = {
+    'PAGE_SIZE': 10
+}
+
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES': [
 #         'rest_framework.permissions.IsAdminUser',

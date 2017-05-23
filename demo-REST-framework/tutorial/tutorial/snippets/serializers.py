@@ -21,7 +21,7 @@ class SnippetSerializer(serializers.Serializer):
     language = serializers.ChoiceField(choices=LANGUAGE_CHOICES, default='python')
     style = serializers.ChoiceField(choices=STYLE_CHOICES, default='friendly')
     owner = serializers.ReadOnlyField(source='owner.username')
-    
+
     def create(self, validated_data):
         """
         Create and return a new `Snippet` instance, given the validated data.
@@ -40,6 +40,23 @@ class SnippetSerializer(serializers.Serializer):
         instance.save()
         return instance
 
+
+class SnippetSerializer(serializers.HyperlinkedModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+    highlight = serializers.HyperlinkedIdentityField(view_name='snippet-highlight', format='html')
+
+    class Meta:
+        model = Snippet
+        fields = ('url', 'id', 'highlight', 'owner',
+                  'title', 'code', 'linenos', 'language', 'style')
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    snippets = serializers.HyperlinkedRelatedField(many=True, view_name='snippet-detail', read_only=True)
+
+    class Meta:
+        model = User
+        fields = ('url', 'id', 'username', 'snippets')
 
 '''   说明
 It's important to remember that ModelSerializer classes don't do anything particularly magical, 

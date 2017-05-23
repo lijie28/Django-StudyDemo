@@ -27,6 +27,7 @@ class Snippet(models.Model):
 
     owner = models.ForeignKey('auth.User', related_name='snippets', on_delete=models.CASCADE)
     highlighted = models.TextField()
+    
 
     class Meta:
         ordering = ('created',)
@@ -45,6 +46,6 @@ def save(self, *args, **kwargs):
     self.highlighted = highlight(self.code, lexer, formatter)
     super(Snippet, self).save(*args, **kwargs)
 
-    
+
 class JustTest(models.Model):
     title = models.TextField()

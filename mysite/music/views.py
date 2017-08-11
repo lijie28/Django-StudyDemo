@@ -1,3 +1,4 @@
+#! usr/bin/python #coding=utf-8 
 # from django.http import Http404
 # from django.http import HttpResponse
 # from django.shortcuts import render, get_object_or_404
@@ -38,7 +39,7 @@ class AlbumUpdate(UpdateView):
 
 class AlbumDelete(DeleteView):
     model = Album
-    success_url = reverse_lazy('music:index')
+    success_url = reverse_lazy('music:index')#反解析url？
 
 
 class UserFormView(View):

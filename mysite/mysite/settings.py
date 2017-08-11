@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'login',
     'register',
     'homepage',
+    'shop',
     # 'API'
     # 'polls.apps.PollsConfig',
 

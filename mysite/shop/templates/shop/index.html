@@ -1,0 +1,78 @@
+{% extends 'shop/base.html' %}
+
+{% block body %}
+    {% if all_goods %}
+        <ul>
+            {% for goods in all_goods %}
+            <div class="home__item width-35 left-65" data-scroll="HomeItem" data-scroll-rate="0.65">
+            <div class="img"  style="padding-top: 20.125%">
+                <a href="{% url 'shop:detail' goods.id %}">
+                    <img src="{{ goods.goods_pic }}" class="img-responsive">
+                </a> 
+            </div> 
+            </div> 
+                
+            <!-- Album logo -->
+                <!-- <a href="{% url 'shop:detail' goods.id %}">
+                    <img src="{{ goods.goods_pic }}" class="img-responsive">
+                </a> -->
+<!-- 
+            <div class="home__item width-35 left-65" data-scroll="HomeItem" data-scroll-rate="1">
+              <div class="img" style="padding-top: 163.125%">
+                <a href="https://www.simonmillerusa.com/shop/accessories/bags/s801-bonsai"><img class="is-loading" data-src="https://www.simonmillerusa.com/wp-content/uploads/2014/10/MALT-BONSAI_UPDATED_2-800x1305.jpg" alt=""></a>
+              </div>
+            </div><div class="home__item width-35 left-0" data-scroll="HomeItem" data-scroll-rate="0.8">
+              <div class="img" style="padding-top: 107.125%">
+                <a href="https://www.simonmillerusa.com/shop/men"><img class="is-loading" data-src="https://www.simonmillerusa.com/wp-content/uploads/2014/10/2-800x857.jpg" alt=""></a>
+              </div>
+            </div><div class="home__item width-35 left-65" data-scroll="HomeItem" data-scroll-rate="0.65">
+              <div class="img" style="padding-top: 160.875%">
+                <a href="https://www.simonmillerusa.com/shop/accessories/bags/s806-mini-birch"><img class="is-loading" data-src="https://www.simonmillerusa.com/wp-content/uploads/2014/10/MINI-BIRCH-WEB-800x1287.jpg" alt=""></a>
+              </div>
+            </div><div class="home__item width-30 left-20" data-scroll="HomeItem" data-scroll-rate="0.9">
+              <div class="img" style="padding-top: 150.75%">
+                <a href="https://www.simonmillerusa.com/shop/women/sweaters"><img class="is-loading" data-src="https://www.simonmillerusa.com/wp-content/uploads/2014/10/4-800x1206.jpg" alt=""></a>
+              </div>
+            </div><div class="home__item width-35 left-55" data-scroll="HomeItem" data-scroll-rate="1">
+              <div class="img" style="padding-top: 107.875%">
+                <a href="https://www.simonmillerusa.com/shop/men/denim"><img class="is-loading" data-src="https://www.simonmillerusa.com/wp-content/uploads/2014/10/5-800x863.jpg" alt=""></a>
+              </div>
+            </div><div class="home__item width-40 left-0" data-scroll="HomeItem" data-scroll-rate="0.9">
+              <div class="img" style="padding-top: 160.875%">
+                <a href="https://www.simonmillerusa.com/shop/accessories/bags/new-arrivals"><img class="is-loading" data-src="https://www.simonmillerusa.com/wp-content/uploads/2014/10/1-EDITED-800x1287.jpg" alt=""></a>
+              </div>
+            </div><div class="home__item width-35 left-50" data-scroll="HomeItem" data-scroll-rate="0.75">
+              <div class="img" style="padding-top: 149.875%">
+                <a href="https://www.simonmillerusa.com/shop/accessories/bags/s801-bonsai"><img class="is-loading" data-src="https://www.simonmillerusa.com/wp-content/uploads/2014/10/7-800x1199.jpg" alt=""></a>
+              </div>
+            </div><div class="home__item width-30 left-0" data-scroll="HomeItem" data-scroll-rate="1.2">
+              <div class="img" style="padding-top: 149.875%">
+                <a href="https://www.simonmillerusa.com/shop/accessories/bags/s801-bonsai"><img class="is-loading" data-src="https://www.simonmillerusa.com/wp-content/uploads/2014/10/8-800x1199.jpg" alt=""></a>
+              </div>
+            </div><div class="home__item width-35 left-65" data-scroll="HomeItem" data-scroll-rate="0.9">
+              <div class="img" style="padding-top: 149.875%">
+                <a href="https://www.simonmillerusa.com/shop/accessories/bags/s801-bonsai/s801-bonsai-maize-nubuck"><img class="is-loading" data-src="https://www.simonmillerusa.com/wp-content/uploads/2014/10/simonmiller16-1-800x1199.jpg" alt=""></a>
+              </div>
+            </div><div class="home__item width-35 left-5" data-scroll="HomeItem" data-scroll-rate="1.15">
+              <div class="img" style="padding-top: 150.76071922545%">
+                <a href="https://www.simonmillerusa.com/shop/men"><img class="is-loading" data-src="https://www.simonmillerusa.com/wp-content/uploads/2014/10/10.jpg" alt=""></a>
+              </div>
+            </div><div class="home__item width-30 left-50" data-scroll="HomeItem" data-scroll-rate="0.8">
+              <div class="img" style="padding-top: 149.875%">
+                <a href="https://www.simonmillerusa.com/shop/women/denim"><img class="is-loading" data-src="https://www.simonmillerusa.com/wp-content/uploads/2014/10/11-800x1199.jpg" alt=""></a>
+              </div>
+            </div>          </div>
+          <div class="home__hero" data-scroll="HomeItem" data-scroll-rate="1">
+            <div class="home__hero__inner">
+              <img data-src="https://www.simonmillerusa.com/wp-content/uploads/2014/10/bleed-e1488310364358-1400x900.jpg" alt="">
+            </div>
+          </div> -->
+  
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>You don't have any goods</h3>
+
+    {% endif %}
+
+{% endblock %}

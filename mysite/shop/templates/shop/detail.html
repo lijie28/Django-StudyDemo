@@ -1,0 +1,29 @@
+{% extends 'shop/base.html' %}
+
+{% block body %}
+
+    <div class="container-fluid goods-container">
+        <div class="row">
+            
+            <!-- Left Album info -->
+            <div class="col-sm-4 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a href="{% url 'shop:detail' goods.id %}">
+                            <img src="{{ goods.goods_pic }}" class="img-responsive">
+                        </a>
+
+                        <h1>{{ goods.name }}
+                            <small>{{ goods.name }}</small>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>  
+  
+
+{% endblock %}
+
+

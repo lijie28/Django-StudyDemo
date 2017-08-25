@@ -1,24 +1,30 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>catwomenissuperrich</title>
-    <!-- {% load staticfiles %} -->
-<!--
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/boostrap/3.3.6/css/bootstrap.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}" />
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> 
-     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
--->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- #加载static shop下的文件 -->
+    <script src="../../static/shop/js/jq.js"></script> 
+    <script src="../../static/shop/js/bootstrap.min.js"></script>  
+    {% load staticfiles %}   
 
-    <!-- <link rel="stylesheet" href="/static/style.css">
-    <script src="/static/head.js"></script> -->
-     <!-- <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}" />  -->
+
+     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
  
-    <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- 只有使用字体图标时才需要加载 Font-Awesome -->
+    <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'shop/buttons.css' %}" />      -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}" />  -->
+     
+         
+
+    
+    <!-- <script>
+            console.dir($.fn.jquery.split(' ')[0].split('.'))
+    </script>  -->
 </head>
 <body>
     <nav class="navbar navbar-inverse ">
@@ -32,19 +38,67 @@
                 </button>
                 <a class="navbar-brand" href="{% url 'shop:index' %}">C A T W O M A N I S S U P E R R I C H</a>
             </div>
-
-            <!-- <div class="collapse navbar-collapse" id="example-navbar-collapse">
-                <ul class="nav navbar-nav">
-
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                </ul>
-            </div> -->
         </div>
     </nav>
+
 {% block body%}
 {% endblock %}
-
+<!-- <div class="navbar-wrapper " style="position: fixed; top: 0px;">
+      <div class="container">
+      <div class="navwrapper">
+        <div class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="{% url 'shop:index' %}">C A T W O M A N I S S U P E R R I C H</a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                
+              </ul>
+            </div>
+          </div>
+        </div> 
+      </div>
+      
+      </div>
+    </div>
+    <script src="../../static/shop/stickUp.min.js"></script>   
+        <script type="text/javascript">
+                
+        jQuery(function($) {
+            $(document).ready( function() {
+            $('.navbar-inverse').stickUp({
+                            parts: {
+                            0:'home',
+                            1:'features',
+                            2: 'updates',
+                            3: 'installation',
+                            4: 'one-pager',
+                            5: 'extras',
+                            6: 'wordpress',
+                            7: 'contact'
+                            },
+                            itemClass: 'menuItem',
+                            itemHover: 'active',
+                            topMargin: 'auto'
+                        });
+            });
+        });
+        
+    </script> -->
 </body>
+
 </html>
+
+<script src="http://localhost:9000/socket.io/socket.io.js"></script>
+    <script>  var connect = io.connect('ws://localhost:9000');
+          connect.on('refer', function(data) {
+              console.log('接收');
+              window.location.reload();
+          })
+</script>

@@ -2,16 +2,19 @@
 
 {% block body %}
 
+    {{ sizes  }}
+    {{ attributes }}
+    test
+
     <div class="container-fluid goods-container">
         <div class="row">
             
-            <!-- Left Album info -->
             <div class="col-sm-4 col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <a href="{% url 'shop:detail' goods.id %}">
                             <img src="{{ goods.goods_pic }}" class="img-responsive">
-                        </a>
+                        </a>  
 
                         <h1>{{ goods.name }}
                             <small>{{ goods.name }}</small>
@@ -20,9 +23,26 @@
                 </div>
             </div>
 
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">   S I Z E 
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+
+                    {% for name in sizes %}
+                    <li>
+                        <a href="#">{{ name }}</a>
+                    </li>
+                    {% endfor %}
+
+
+                   
+
+                </ul>
+            </div>
         </div>
     </div>  
-  
 
 {% endblock %}
 

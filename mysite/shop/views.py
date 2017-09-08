@@ -6,16 +6,22 @@ from django.shortcuts import render_to_response
 
 from django.template import RequestContext  
 from django.http import HttpResponse
-# from django.template import loader
 from django.views import generic
 from django.views.generic import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
-from .models import Goods, Common, Category, Attribute
-# from .models import Category
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+from django.views.decorators.csrf import csrf_exempt 
+from .models import Goods, Category, Attribute, AttributeValue
+
+# import numpy 
 
 import pickle
 import json
+from mysite import tools
 
 # Create your views here.
 
@@ -28,16 +34,6 @@ def newlist(l):
             if key == '1':
                 nlist.append (d[key])
     return nlist
-        
-
-
-def add_goods_get(request):
-    return render_to_response('shop/addgoods.html')
-
-
-
-def add_goods(request):
-    return render_to_response('shop/addgoods.html')
 
 
 def goods_detail(request, goods_id):
@@ -51,11 +47,6 @@ def goods_detail(request, goods_id):
     }
     return render(request,'shop/detail.html',context)
 
-# def goodsdetail(request,goods_id):
-#     goods = Goods.objects.get(id=goods_id)
-#     # template_name = 'shop/detail.html'
-#     return render(request,'shop/detail.html',{'attributes':goods.attributes})
-
 
 class IndexView(generic.ListView):
     template_name = 'shop/index.html'
@@ -65,18 +56,6 @@ class IndexView(generic.ListView):
         return Goods.objects.all()
 
 
-# class DetailView(generic.DetailView):
-#     model = Goods
-#     template_name = 'shop/detail.html'
-
-#     def get_attribute():
-#         return json.loads(Goods.attributes);
-
 class GoodsCreate(CreateView):
     model = Goods
     fields = ['name', 'goods_pic']
-
-
-# class GoodsUpdate(UpdateView):
-#     model = Goods
-#     fields = ['name', 'goods_pic']

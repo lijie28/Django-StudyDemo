@@ -52,9 +52,9 @@ from board.urls import router
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^music/', include('music.urls')),
-    url(r'^polls/', include('polls.urls')),
+    # url(r'^music/', include('music.urls')),
     url(r'^shop/', include('shop.urls')),
+    url(r'^goodsmanage/', include('goods_manage.urls')),
     url(r'^api/token/', obtain_auth_token, name='api-token'),
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))

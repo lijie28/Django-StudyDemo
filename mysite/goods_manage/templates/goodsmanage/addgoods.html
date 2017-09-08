@@ -1,0 +1,42 @@
+ {% extends 'shop/base.html' %} {% block body %} 
+
+<div>
+    request {{ request }}
+    </br>
+    dic {{ dic }}
+    </br>
+    attributes {{ a }}
+    </br>
+    categorys {{ c }}
+    </br>
+</div>
+
+<form action= "{% url 'goods_manage:add_goods_attr'  goods %}" method="post"> {% csrf_token %}
+    <div>
+        名字：<br><input type="text" name="name">
+    </div>
+    <div>
+        图片地址:<br><input type="text" name="goods_pics">
+    </div>pk
+    <div>
+        分类:<br> {% for v in c %}
+        <label><input name='categorys' type="checkbox" value={{ v.id }} />{{ v.name }} </label> {% endfor %}
+
+    </div>
+    <div>
+        规格:<br> {% for v in a %}
+        <label><input name='attributes' type="checkbox" value={{ v.id }} />{{ v.name }} </label> {% endfor %}
+
+    </div>
+    <div>
+    </div>
+    <div>
+        <input type="submit" value="确定">
+    </div>
+
+
+
+</form>
+
+
+ {% endblock %} 

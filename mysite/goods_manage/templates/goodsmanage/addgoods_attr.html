@@ -11,14 +11,24 @@
 </div>
 
 
-<form action= "#" method="post"> {% csrf_token %}
-    <div>
-        价格：<input type="text" name="price">
-    
-        库存:<input type="text" name="stock">
- 
-        图片地址:<input type="text" name="attr_pic">
-    </div>
+<form action= "{% url 'goods_manage:add_success'  %}" method="post"> {% csrf_token %}
+
+        {% for x in attrs %}
+
+        <div>
+            {{ forloop.counter0 }}
+            {% for a in x %}
+                {{ a.value }}
+            {% endfor %}
+            价格：<input type="text" name="{{ x }}[{{ forloop.counter0 }}]['price']">
+        
+            库存:<input type="text" name="{{ x }}[{{ forloop.counter0 }}]['stock']">
+     
+            图片地址:<input type="text" name="{{ x }}[{{ forloop.counter0 }}]['attr_pic']">
+        </div>
+    {% endfor %}
+
+
     <div>
         <input type="submit" value="确定">
     </div>

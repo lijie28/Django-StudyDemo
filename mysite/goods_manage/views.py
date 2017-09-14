@@ -13,8 +13,8 @@ from django.forms.models import model_to_dict
 zArr = [["a1","a2","c2","c3"],["b1","b2","b3","b4","b5"],["c1","c2","c3","c4"]]
 
 def debug (request):
-    num = 12
-    v = tools.getTheOne(zArr,num)
+    num = 1
+    v = tools.getTheOneLoc(zArr,num)
     strv = ''
     for i in range(len(v)):
         if i ==0:
@@ -23,7 +23,7 @@ def debug (request):
             strv = strv +'|'+ zArr[i][v[i]] 
 
     context = {
-        'dic': strv
+        'dic': v
 
     }
     return render(request, 'goodsmanage/success.html', context)
@@ -46,27 +46,29 @@ def add_goods_attr(request):
     """
     dic = tools.get_parameters(request)
     # attr = AttributeValue.objects.filter(a_id='1')
-
     attr_details = []
-    data_arr = dic.getlist('attributes')
-    strv = ''
-    # attr_details = countList(dic.getlist('attributes'))
-    for i in range(len(data_arr)):
-        tools.getTheOne(zArr,num)
-
+    attr_details_model = []
+    for a in dic.getlist('attributes'):
+        attr_detail = AttributeValue.objects.filter(a_id=a)
+        attr_details.append(attr_detail)
         
-        if i ==0:
-            strv = strv + data_arr[i][v[i]]['value'] 
-        else:
-            strv = strv +'|'+ data_arr[i][v[i]]['value']
-    # # for a in dic.getlist('attributes'):
-    #     attr_detail = AttributeValue.objects.filter(a_id=a)
-    #     attr_details.append(attr_detail)
-    #     count.append (len(a))
-            
+    countArr = tools.getCountArr(attr_details)
+    count = 1
+    for x in countArr:
+        count = count*x
+
+    for a in range(count):
+        loc = tools.getTheOneLoc(attr_details,a)
+        print '过程',a,loc,attr_details
+        mlist = []
+        for i in range(len(loc)):
+            mlist.append(attr_details[i][loc[i]])
+        attr_details_model.append(mlist)
+        print '有', attr_details_model
+        
     context = {
         'dic': dic ,
-        'attrs' : attr_details ,
+        'attrs' : attr_details_model ,
     }
 
     return render(request, 'goodsmanage/addgoods_attr.html', context)

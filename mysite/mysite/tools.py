@@ -18,7 +18,7 @@ def getTheDividendAtIndex (index,arrCount,num):
 
     return dividend                                              
 
-def getTheOne (zArr,num): 
+def getTheOneLoc (zArr,num): 
     arrCount = getCountArr(zArr)
     newArr = []
     for i in range(len(arrCount)):

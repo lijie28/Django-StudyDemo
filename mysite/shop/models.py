@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.core.urlresolvers import reverse
-
+import json
 
 class Category(models.Model):
     name = models.CharField(max_length=250,default='0')
@@ -18,6 +18,12 @@ class AttributeValue(models.Model):
     a_id = models.CharField(max_length=250,default='0')
     a_name = models.CharField(max_length=250,default='null')
     value = models.CharField(max_length=250,default='null')
+
+    def __unicode__(self):
+        return '%s' % (self.value)
+    
+    def toJSON(self):
+        return json.dumps(dict([(attr, getattr(self, attr)) for attr in [f.name for f in self._meta.fields]]))
 
 
 class Goods(models.Model):

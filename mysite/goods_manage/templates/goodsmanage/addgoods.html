@@ -1,17 +1,17 @@
  {% extends 'shop/base.html' %} {% block body %} 
 
 <div>
-    request {{ request }}
+    request : {{ request }}
     </br>
-    dic {{ dic }}
+    dic : {{ dic }}
     </br>
-    attributes {{ a }}
+    attributes : {{ a }}
     </br>
-    categorys {{ c }}
+    categorys : {{ c }}
     </br>
 </div>
 
-<form action= "{% url 'goods_manage:add_goods_attr'  goods %}" method="post"> {% csrf_token %}
+<form action= "{% url 'goods_manage:add_goods_attr'  %}" method="post"> {% csrf_token %}
     <div>
         名字：<br><input type="text" name="name">
     </div>

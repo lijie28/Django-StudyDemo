@@ -5,21 +5,35 @@ from django.shortcuts import render
 from shop.models import Goods, Category, Attribute, AttributeValue
 from mysite import tools
 
+from django.forms.models import model_to_dict  
+
 # Create your views here.
 
 
-def add_goods_attr(request,goods_id):
-    """add goods attribute
-    """
-    goods = Goods.objects.get(id=goods_id)
-    c = tools.dbClassListToList(Category)
-    a = tools.dbClassListToList(Attribute)
+def add_success(request):
     dic = tools.get_parameters(request)
     context = {
-        'c': c,
-        'a': a,
         'dic': dic ,
-        'goods' :goods
+    }
+    return render(request, 'goodsmanage/success.html', context)
+
+
+def add_goods_attr(request):
+    """add goods attribute
+    """
+    dic = tools.get_parameters(request)
+    # attr = AttributeValue.objects.filter(a_id='1')
+
+    attr_details = []
+    for a in dic.getlist('attributes'):
+        attr_detail = AttributeValue.objects.filter(a_id=a)
+        attr_details.append(attr_detail)
+        # for x in attr_detail:
+        #     attr_details.append(x)
+            
+    context = {
+        'dic': dic ,
+        'attrs' : attr_details ,
     }
 
     return render(request, 'goodsmanage/addgoods_attr.html', context)

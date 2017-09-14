@@ -1,12 +1,34 @@
 <div>
-    request {{ request }}
+    request : {{ request }}
     </br>
-    goods {{ goods }}
+    dic : {{ dic }}
     </br>
-    dic {{ dic }}
-    </br>
-    attributes {{ a }}
-    </br>
-    categorys {{ c }}
+    attrs : {{ attrs }}
+   -----
+    {% for a in attrs %}
+
+    {% for x in a %}
+
+     {{x.value}},
+
+    {% endfor %}
+
+    {% endfor %}
+    
     </br>
 </div>
+
+
+<form action= "#" method="post"> {% csrf_token %}
+    <div>
+        价格：<br><input type="text" name="price">
+    </div>
+    <div>
+        库存:<br><input type="text" name="stock">
+    </div>
+    <div>
+        图片地址:<br><input type="text" name="attr_pic">
+    </div>
+    <div>
+        <input type="submit" value="确定">
+    </div>

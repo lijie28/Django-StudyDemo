@@ -3,6 +3,36 @@
 import numpy 
 
 
+def getCountArr(arr):
+    countArr = []
+    for v in arr:
+        countArr.append (len(v))
+    return countArr
+
+def getTheDividendAtIndex (index,arrCount,num):
+    dividend = num;
+    for i in range(index):
+                        # print i,"除前:",dividend
+        dividend = dividend / arrCount[i]
+                        # print "除后:",dividend,arrCount[i]
+
+    return dividend                                              
+
+def getTheOne (zArr,num): 
+    arrCount = getCountArr(zArr)
+    newArr = []
+    for i in range(len(arrCount)):
+        dividend = getTheDividendAtIndex (i,arrCount,num)
+                        # print arrCount, '第',i,'个' ,':',arrCount[i],'-',dividend
+        k = dividend%(arrCount[i])
+        newArr.append(k)
+    print '最终',newArr
+    return newArr
+
+
+
+
+
 def get_parameters(request):
     if request.method == 'GET' :   
         s = request.META['QUERY_STRING']   
@@ -48,3 +78,8 @@ def get_dbvalue_list(class_name,attribute_name):
         v = getattr(olv, attribute_name)
         nlist.append (v)
     return nlist
+
+
+
+
+

@@ -5,15 +5,7 @@
     </br>
     attrs : {{ attrs }}
    -----
-    {% for a in attrs %}
 
-    {% for x in a %}
-
-     {{x.value}},
-
-    {% endfor %}
-
-    {% endfor %}
     
     </br>
 </div>
@@ -21,13 +13,11 @@
 
 <form action= "#" method="post"> {% csrf_token %}
     <div>
-        价格：<br><input type="text" name="price">
-    </div>
-    <div>
-        库存:<br><input type="text" name="stock">
-    </div>
-    <div>
-        图片地址:<br><input type="text" name="attr_pic">
+        价格：<input type="text" name="price">
+    
+        库存:<input type="text" name="stock">
+ 
+        图片地址:<input type="text" name="attr_pic">
     </div>
     <div>
         <input type="submit" value="确定">

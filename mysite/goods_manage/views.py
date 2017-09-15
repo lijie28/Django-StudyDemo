@@ -45,6 +45,7 @@ def add_goods_attr(request):
     """add goods attribute
     """
     dic = tools.get_parameters(request)
+
     # attr = AttributeValue.objects.filter(a_id='1')
     attr_details = []
     attr_details_model = []
@@ -66,8 +67,27 @@ def add_goods_attr(request):
         attr_details_model.append(mlist)
         print '有', attr_details_model
         
+
+    str_attr = ''
+    for i in range(len(dic.getlist('attributes'))) :
+        if i == 0 :
+            str_attr = dic.getlist('attributes')[i]
+        else:
+            str_attr = str_attr + ',' + dic.getlist('attributes')[i]
+
+
+    str_category = ''
+    for i in range(len(dic.getlist('categorys'))) :
+        if i == 0 :
+            str_category = dic.getlist('categorys')[i]
+        else:
+            str_category = str_category + ',' + dic.getlist('categorys')[i]
+        
+    goods_model = Goods.objects.create(name=dic['name'],pic=dic['pic'],categorys=str_category,attributes=str_attr,describe=dic['describe'])
+
     context = {
         'dic': dic ,
+        'goods_model' :goods_model,
         'attrs' : attr_details_model ,
     }
 
@@ -86,3 +106,6 @@ def add_goods(request):
     }
 
     return render(request, 'goodsmanage/addgoods.html', context)
+
+
+def changeStr(dic,para):

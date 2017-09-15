@@ -16,7 +16,7 @@
         名字：<br><input type="text" name="name">
     </div>
     <div>
-        图片地址:<br><input type="text" name="goods_pics">
+        图片地址:<br><input type="text" name="pic">
     </div>pk
     <div>
         分类:<br> {% for v in c %}
@@ -27,6 +27,10 @@
         规格:<br> {% for v in a %}
         <label><input name='attributes' type="checkbox" value={{ v.id }} />{{ v.name }} </label> {% endfor %}
 
+    </div>
+
+    <div>
+        描述:<br><input type="text" name="describe">
     </div>
     <div>
     </div>

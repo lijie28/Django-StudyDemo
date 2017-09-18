@@ -38,12 +38,12 @@ def newlist(l):
 
 def goods_detail(request, goods_id):
     goods = Goods.objects.get(id=goods_id)
-    attributes = json.loads(goods.attributes)
-    sizes = newlist(attributes)
+    # attributes = json.loads(goods.attributes)
+    # sizes = newlist(attributes)
     context = {
         'goods':goods,
-        'attributes':attributes,
-        'sizes':sizes
+        'attributes':goods.attributes,
+        # 'sizes':sizes
     }
     return render(request,'shop/detail.html',context)
 

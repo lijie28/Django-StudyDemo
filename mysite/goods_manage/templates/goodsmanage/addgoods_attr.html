@@ -22,13 +22,19 @@
             {% for a in x %}
                 {{ a.value }}
             {% endfor %}
-            属性：<input type="hidden" name="attr" value="{% for a in x %}{% if forloop.last %}{{ a.a_id }}|{{ a.a_name }}|{{ a.id }}|{{ a.value }}{% else %}{{ a.a_id }}|{{ a.a_name }}|{{ a.id }}|{{ a.value }},{% endif %}{% endfor %}">
 
-            价格：<input type="text" name="price" value="0.01">
+            商品id:{{ goods_model.id }}<input type="hidden" name="goods_id" value="{{ goods_model.id }}">
+
+            属性：{% for a in x %}{% if forloop.last %}{{ a.a_id }}|{{ a.a_name }}|{{ a.id }}|{{ a.value }}{% else %}{{ a.a_id }}|{{ a.a_name }}|{{ a.id }}|{{ a.value }},{% endif %}{% endfor %}<input type="hidden" name="attr_comb" value="{% for a in x %}{% if forloop.last %}{{ a.a_id }}|{{ a.a_name }}|{{ a.id }}|{{ a.value }}{% else %}{{ a.a_id }}|{{ a.a_name }}|{{ a.id }}|{{ a.value }},{% endif %}{% endfor %}">
+
+            价格：<input type="text" name="price" value="0">
         
             库存:<input type="text" name="stock" value="99">
      
             图片地址:<input type="text" name="attr_pic" value="null">
+
+            确定选择:<input type="checkbox" name="is_seleced" value="{{ forloop.counter0 }}">
+            
         </div>
     {% endfor %}
 

@@ -7,5 +7,5 @@ app_name = 'shop'
 
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^(?P<goods_id>[0-9]+)/$', views.goods_detail, name='detail'),
+    url(r'goods/(?P<goods_id>[0-9]+)/$', views.goods_detail, name='detail'),
 ]

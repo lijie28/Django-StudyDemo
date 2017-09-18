@@ -80,6 +80,14 @@ def get_dbvalue_list(class_name,attribute_name):
     return nlist
 
 
+def changeStr(dic,para):
+    str_attr = ''
+    for i in range(len(dic.getlist(para))) :
+        if i == 0 :
+            str_attr = dic.getlist(para)[i]
+        else:
+            str_attr = str_attr + ',' + dic.getlist(para)[i]
+    return str_attr
 
 
 

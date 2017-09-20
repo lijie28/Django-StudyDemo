@@ -3,10 +3,9 @@
 {% block body %}
 
     {{ attributes }}
-    test
 
     <div class="container-fluid goods-container">
-        <div class="row">
+        <div class="row">   
             
             <div class="col-sm-4 col-md-3">
                 <div class="panel panel-default">
@@ -23,14 +22,20 @@
             </div>
 
 
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">   S I Z E 
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
 
-                </ul>
-            </div>
+    {{ price_stock }}
+     {% for x in price_stock %}
+     
+             <div class="btn-group">
+                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">  {{}} 
+                     <span class="caret"></span>
+                 </button>
+                 <ul class="dropdown-menu" role="menu">
+ 
+                 </ul>
+             </div>
+    {% endfor %}
+
         </div>
     </div>  
 

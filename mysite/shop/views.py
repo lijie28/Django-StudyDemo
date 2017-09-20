@@ -15,7 +15,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from django.views.decorators.csrf import csrf_exempt 
-from .models import Goods, Category, Attribute, AttributeValue
+from .models import Goods, Category, Attribute,AttributeValue, PriceStock
 
 # import numpy 
 
@@ -38,12 +38,20 @@ def newlist(l):
 
 def goods_detail(request, goods_id):
     goods = Goods.objects.get(id=goods_id)
+    price_stock = PriceStock.objects.filter(goods_id=goods_id)
+
+    nexList = []
+    a_list = goods.attributes.split(',')
+    for x in a_list:
+        av = AttributeValue.objects.filter(a_id=x)
+        nexList.append(av)
+
     # attributes = json.loads(goods.attributes)
     # sizes = newlist(attributes)
     context = {
         'goods':goods,
         'attributes':goods.attributes,
-        # 'sizes':sizes
+        'price_stock':nexList
     }
     return render(request,'shop/detail.html',context)
 

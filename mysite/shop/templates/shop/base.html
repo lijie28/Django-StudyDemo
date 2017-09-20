@@ -6,11 +6,11 @@
 <head>
     <meta charset="UTF-8">
     <title>catwomenissuperrich</title>
-    <!-- #加载static shop下的文件 -->
-    <script src="../../static/shop/js/jq.js"></script> 
-    <script src="../../static/shop/js/bootstrap.min.js"></script>  
-    {% load staticfiles %}   
-
+    <!-- #加载static shop下的文件  
+{% load staticfiles %} -->
+      
+    <script src="{% static "shop/js/ajq.js" %}"></script> 
+    <script src="{% static "shop/js/bootstrap.min.js" %}"></script> 
 
      <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
  
@@ -96,10 +96,10 @@
 
 </html>
 
-<script src="http://localhost:9000/socket.io/socket.io.js"></script>
+<!-- <script src="http://localhost:9000/socket.io/socket.io.js"></script>
     <script>  var connect = io.connect('ws://localhost:9000');
           connect.on('refer', function(data) {
               console.log('接收');
               window.location.reload();
           })
-</script>
+</script>  -->

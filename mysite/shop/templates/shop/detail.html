@@ -3,7 +3,8 @@
 {% block body %}
 
     {{ attributes }}
-
+    {{ price_stock }}
+    
     <div class="container-fluid goods-container">
         <div class="row">   
             
@@ -23,18 +24,28 @@
 
 
 
-    {{ price_stock }}
      {% for x in price_stock %}
      
              <div class="btn-group">
-                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">  {{}} 
+                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">  {{x.name}}
                      <span class="caret"></span>
                  </button>
                  <ul class="dropdown-menu" role="menu">
- 
-                 </ul>
+                    
+                    
+                    
+                {% for a in x.data %}
+     
+                <li>
+                    <a href="#">{{ a }}</a>
+                </li>
+                {% endfor %}
+                </ul>
              </div>
     {% endfor %}
+
+
+
 
         </div>
     </div>  

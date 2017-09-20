@@ -22,17 +22,26 @@ from .models import Goods, Category, Attribute,AttributeValue, PriceStock
 import pickle
 import json
 from mysite import tools
+# from django.template.defaulttags import register
+# # Create your views here.
 
-# Create your views here.
-
+# @register.filter
+# def get_item(dictionary, key):
+#     return dictionary.get(key)
 
 #乱鸡巴写的取出数组也写对了卧槽
-def newlist(l):
+def attrNewlist(l):
     nlist = []
-    for d in l:
-        for key in d :
-            if key == '1':
-                nlist.append (d[key])
+    for x in l:
+        a_list = []
+        av = AttributeValue.objects.filter(a_id=x)
+        name = av[0].a_name
+        for i in av:
+            a_list.append(i.value)
+        new_dict = {}
+        new_dict['name'] = name
+        new_dict['data'] = a_list
+        nlist.append(new_dict)
     return nlist
 
 
@@ -40,18 +49,15 @@ def goods_detail(request, goods_id):
     goods = Goods.objects.get(id=goods_id)
     price_stock = PriceStock.objects.filter(goods_id=goods_id)
 
-    nexList = []
     a_list = goods.attributes.split(',')
-    for x in a_list:
-        av = AttributeValue.objects.filter(a_id=x)
-        nexList.append(av)
+    a_new_list = attrNewlist(a_list)
 
     # attributes = json.loads(goods.attributes)
     # sizes = newlist(attributes)
     context = {
         'goods':goods,
         'attributes':goods.attributes,
-        'price_stock':nexList
+        'price_stock':a_new_list
     }
     return render(request,'shop/detail.html',context)
 

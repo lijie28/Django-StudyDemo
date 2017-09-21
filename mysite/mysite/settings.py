@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'shop',
     'board',
     'goods_manage',
+    'demo',
 ]
 
 MIDDLEWARE_CLASSES = [

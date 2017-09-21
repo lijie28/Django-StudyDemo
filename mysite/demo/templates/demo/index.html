@@ -1,17 +1,60 @@
-
 <!DOCTYPE html>
 
 <html lang="cn">
+
 <head>
     <meta charset="UTF-8">
     <title>demo for test html,css,js </title>
-</head>
-<body>
+    <style type="text/css">
+        #box {
+            padding: 0;
+            width: 900px;
+            height: 900px;
+            margin: 10px;
+        }
 
-{% block body%}
-{% endblock %}
+        #block {
+            float: left;
+            background-color: orange;
+            border: 2px;
+            border-radius: 10px;
+            width: 30%;
+            height: 30%;
+            margin: 5px;
+        }
+    </style>
+    <script type="text/javascript">
+        function load() {
+            window.status = "Page is loaded"
+        }
+    </script>
+
+</head>
+
+<body onload="load()">
+
+
+
+    <div id="box">
+        <script>
+            for (var i = 0; i < 9; i++) {
+                document.write('<div id="block"></div>');
+                document
+                http://jnshu.com/task/2/21/detail//#0
+                http://javascript.ruanyifeng.com/dom/node.html
+            }
+        </script>
+    </div>
+
+    <div>
+        <button onclick="">开始闪</button>
+    </div>
+    <div>
+        <button>结束闪</button>
+    </div>
+    
+    {% block body%} {% endblock %}
 
 </body>
 
 </html>
-

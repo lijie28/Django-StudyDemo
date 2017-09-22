@@ -141,17 +141,24 @@
         }
 
         function change3BoxColor() {
+            var arr = get3SJS();
             for (var i = 0; i < 9; i++) {
-                var arr = get3SJS();
                 var box = document.getElementById('block' + i);
                 if (IsInArray(i,arr)) {
                     box.style.backgroundColor = getRandomColor();
                 } else {
-                    box.style.backgroundColor = orange;
-                }
+                    box.style.backgroundColor = 'Orange';
+                } 
 
             }
         }
+        function getBackColor() {
+            for (var i = 0; i < 9; i++) {
+                var box = document.getElementById('block' + i);
+                box.style.backgroundColor = 'Orange';
+            }
+        }
+
     </script>
 
 </head>
@@ -181,7 +188,7 @@
         </script>
     </div>
     <div>
-        <button onclick="">结束闪</button>
+        <button onclick="getBackColor()">结束闪</button>
     </div>
 
     {% block body%} {% endblock %}

@@ -6,207 +6,56 @@
     <meta charset="UTF-8">
     <title>demo for test html,css,js </title>
     <style type="text/css">
-        #box {
-            padding: 0;
-            width: 900px;
-            height: 900px;
-            margin: 10px;
+        body{
+            background-color: #eef1f3;
+
+        }
+        .header {
+            position: relative;
+            background-color: #5dc1cc;
+
+            text-align: center;
+            line-height: 64px;
+            height: 64px;
+            width: 100%;
+            margin: 0px ;
+            padding: 0px  ;
+            font-size: 20px;
+            color: white;
         }
 
-        #block1 {
+        #titleLeft {
+            position: relative;
             float: left;
-            background-color: orange;
-            border: 2px;
-            border-radius: 10px;
-            width: 30%;
-            height: 30%;
-            margin: 5px;
+            left: 20px;
+            color: white;
+            font-size: 15px;
         }
 
-        #block2 {
-            float: left;
-            background-color: orange;
-            border: 2px;
-            border-radius: 10px;
-            width: 30%;
-            height: 30%;
-            margin: 5px;
-        }
 
-        #block3 {
-            float: left;
-            background-color: orange;
-            border: 2px;
-            border-radius: 10px;
-            width: 30%;
-            height: 30%;
-            margin: 5px;
-        }
-
-        #block4 {
-            float: left;
-            background-color: orange;
-            border: 2px;
-            border-radius: 10px;
-            width: 30%;
-            height: 30%;
-            margin: 5px;
-        }
-
-        #block5 {
-            float: left;
-            background-color: orange;
-            border: 2px;
-            border-radius: 10px;
-            width: 30%;
-            height: 30%;
-            margin: 5px;
-        }
-
-        #block6 {
-            float: left;
-            background-color: orange;
-            border: 2px;
-            border-radius: 10px;
-            width: 30%;
-            height: 30%;
-            margin: 5px;
-        }
-
-        #block7 {
-            float: left;
-            background-color: orange;
-            border: 2px;
-            border-radius: 10px;
-            width: 30%;
-            height: 30%;
-            margin: 5px;
-        }
-
-        #block8 {
-            float: left;
-            background-color: orange;
-            border: 2px;
-            border-radius: 10px;
-            width: 30%;
-            height: 30%;
-            margin: 5px;
-        }
-
-        #block0 {
-            float: left;
-            background-color: orange;
-            border: 2px;
-            border-radius: 10px;
-            width: 30%;
-            height: 30%;
-            margin: 5px;
+        #titleRight {
+            position: relative;
+            float: right;
+            right: 20px;
+            color: white;
+            font-size: 15px;
         }
     </style>
-    <script type="text/javascript">
-        function load() {
-            window.status = "Page is loaded"
-        }
-
-        function get3SJS() {
-            var sjs1 = Math.round(8 * Math.random());
-            var sjs2 = Math.round(8 * Math.random());
-            while (sjs1 == sjs2) {
-                sjs2 = Math.round(8 * Math.random());
-            }
-            var sjs3 = Math.round(8 * Math.random());
-            while (sjs3 == sjs1 || sjs3 == sjs2) {
-                sjs3 = Math.round(8 * Math.random());
-            }
-            return Array(sjs1, sjs2, sjs3)
-        }
-
-        function alert3() {
-            alert(get3SJS());
-        }
-
-        function getRandomColor() {
-            return (function (m, s, c) {
-                return (c ? arguments.callee(m, s, c - 1) : '#') +
-                    s[m.floor(m.random() * 16)]
-            })(Math, '0123456789abcdef', 5)
-        }
-
-        function IsInArray(val, arr) {
-
-            var testStr = ',' + arr.join(",") + ",";
-
-            return testStr.indexOf("," + val + ",") != -1;
-
-        }
-
-        function change3BoxColor() {
-            var arr = get3SJS();
-            for (var i = 0; i < 9; i++) {
-                var box = document.getElementById('block' + i);
-                if (IsInArray(i, arr)) {
-                    box.style.backgroundColor = getRandomColor();
-                } else {
-                    box.style.backgroundColor = 'Orange';
-                }
-
-            }
-
-        }
-
-        function autoChangeColor(open){
-
-            if(open == true){
-
-                id = window.setInterval(change3BoxColor,1000); 
-            }else{
-
-                window.clearInterval(id);
-                getBackColor();
-            }
-
-        }
-
-
-        function getBackColor() {
-            for (var i = 0; i < 9; i++) {
-                var box = document.getElementById('block' + i);
-                box.style.backgroundColor = 'Orange';
-            }
-        }
-    </script>
 
 </head>
 
-<body onload="load()">
+<body>
+
 
     <div>
-        <p id="forshow">test for show</p>
+        <div class="header">登陆
+            <span id="titleLeft">关闭</span>
+            <span id="titleRight">注册</span>
+        </div>
     </div>
+    <div class="inputbox">
 
-    <div id="box">
-        <div id="block1"></div>
-        <div id="block2"></div>
-        <div id="block3"></div>
-        <div id="block4"></div>
-        <div id="block5"></div>
-        <div id="block6"></div>
-        <div id="block7"></div>
-        <div id="block8"></div>
-        <div id="block0"></div>
     </div>
-
-    <div>
-        <button onclick="autoChangeColor(true)">开始闪</button>
-        <script>
-
-        </script>
-    </div>
-    <div>
-        <button onclick="autoChangeColor(false)">结束闪</button>
-    </div>
-
-    {% block body%} {% endblock %}
 
 </body>
 

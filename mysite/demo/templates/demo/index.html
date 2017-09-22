@@ -132,7 +132,7 @@
             })(Math, '0123456789abcdef', 5)
         }
 
-        function IsInArray( val,arr) {
+        function IsInArray(val, arr) {
 
             var testStr = ',' + arr.join(",") + ",";
 
@@ -144,21 +144,29 @@
             var arr = get3SJS();
             for (var i = 0; i < 9; i++) {
                 var box = document.getElementById('block' + i);
-                if (IsInArray(i,arr)) {
+                if (IsInArray(i, arr)) {
                     box.style.backgroundColor = getRandomColor();
                 } else {
                     box.style.backgroundColor = 'Orange';
-                } 
+                }
 
             }
+
         }
+
+        function autoChangeColor(){
+
+             window.setInterval("change3BoxColor", 10000);
+        }
+
+
         function getBackColor() {
+            window.clearInterval(id);
             for (var i = 0; i < 9; i++) {
                 var box = document.getElementById('block' + i);
                 box.style.backgroundColor = 'Orange';
             }
         }
-
     </script>
 
 </head>
@@ -182,7 +190,7 @@
     </div>
 
     <div>
-        <button onclick="change3BoxColor()">开始闪</button>
+        <button onclick="autoChangeColor()">开始闪</button>
         <script>
 
         </script>

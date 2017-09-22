@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <title>demo for test html,css,js </title>
     <style type="text/css">
-        body{
+        body {
             background-color: #eef1f3;
-
         }
+
         .header {
             position: relative;
             background-color: #5dc1cc;
@@ -18,12 +18,11 @@
             line-height: 64px;
             height: 64px;
             width: 100%;
-            margin: 0px ;
-            padding: 0px  ;
+            margin: 0px;
+            padding: 0px;
             font-size: 20px;
             color: white;
         }
-
         #titleLeft {
             position: relative;
             float: left;
@@ -40,6 +39,65 @@
             color: white;
             font-size: 15px;
         }
+
+        .inputbox {
+
+            width: 100%;
+            margin-top: 10px;
+            padding: 0px;
+            height: 50px;
+            background-color: white;
+        }
+
+        #phone {
+            position: relative;
+            float: left;
+            border-style: none;
+            outline: none;
+            height: 50px;
+            left: 75px;
+            width: 80%;
+        }
+
+        #password {
+            position: relative;
+            float: left;
+            border-style: none;
+            outline: none;
+            line-height: 50px;
+            left: 75px;
+            width: 80%;
+        }
+
+        .loginbox {
+
+            width: 100%;
+            margin-top: 35px;
+            padding: 0px;
+            height: 50px;
+            line-height: 50px;
+            color: white;
+            background-color: #5dc1cc;
+            text-align: center;
+            font-size: 20px;
+
+            border-style: none;
+            outline: none;
+        }
+        .forgetpwdbox {
+
+            width: 100%;
+            padding: 0px;
+            height: 38;
+            line-height: 38px;
+            color: #5dc1cc;
+            background-color: #eef1f3;
+            text-align: right;
+            font-size: 15px;
+
+            border-style: none;
+            outline: none;
+        }
     </style>
 
 </head>
@@ -53,9 +111,22 @@
             <span id="titleRight">注册</span>
         </div>
     </div>
+
+
+    <img src="iphone.png" alt="Big Boat">
+
     <div class="inputbox">
 
+        <input id="phone" type="text" placeholder="请输入手机号" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+        <img src="iphone.png" alt="Big Boa">
     </div>
+    <div class="inputbox">
+        <input id="password" type="password" placeholder="请输入密码" minlength="6">
+    </div>
+    <button class="loginbox" value="#">登 陆
+    </button>
+    <button class="forgetpwdbox" value="#">忘记密码？
+    </button>
 
 </body>
 

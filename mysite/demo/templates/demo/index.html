@@ -154,14 +154,21 @@
 
         }
 
-        function autoChangeColor(){
+        function autoChangeColor(open){
 
-             window.setInterval("change3BoxColor", 10000);
+            if(open == true){
+
+                id = window.setInterval(change3BoxColor,1000); 
+            }else{
+
+                window.clearInterval(id);
+                getBackColor();
+            }
+
         }
 
 
         function getBackColor() {
-            window.clearInterval(id);
             for (var i = 0; i < 9; i++) {
                 var box = document.getElementById('block' + i);
                 box.style.backgroundColor = 'Orange';
@@ -190,13 +197,13 @@
     </div>
 
     <div>
-        <button onclick="autoChangeColor()">开始闪</button>
+        <button onclick="autoChangeColor(true)">开始闪</button>
         <script>
 
         </script>
     </div>
     <div>
-        <button onclick="getBackColor()">结束闪</button>
+        <button onclick="autoChangeColor(false)">结束闪</button>
     </div>
 
     {% block body%} {% endblock %}

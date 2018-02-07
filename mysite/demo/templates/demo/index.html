@@ -129,6 +129,16 @@
     </button>
     <button class="forgetpwdbox" value="#">忘记密码？
     </button>
+    <script type="text/javascript">
+        var request = new XMLHttpRequest();
+        request.open('GET', '/bar/foo.txt', false);
+        request.send(null);
+        
+        if (request.status === 200) {
+          console.log(request.responseText);
+        }
+        
+    </script>
 
 </body>
 
